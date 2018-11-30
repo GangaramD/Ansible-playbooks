@@ -1,7 +1,7 @@
 ---
 
 - name: Install Java 8 using YUM.
-  yum:
+  apt:
     name: "{{java.VERSION}}"
     state: present
   become: true
@@ -19,12 +19,12 @@
   become: true
 
 - name: Import GPG Key
-  rpm_key:
+  apt_key:
     state: present
     key: "{{jenkins.gpg_key}}"
 
 - name: Install Jenkins
-  yum:
+  apt:
     name: jenkins
     state: present
 
